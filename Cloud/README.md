@@ -1,5 +1,15 @@
 ## Introduction into Cloud 
 
+## Important Links
+
+[Virtual Machine](VM'S.md)
+
+[Virtual Networks](VNET.md)
+
+[Cloud Questions ](Questions.md)
+
+# Cloud
+
 Cloud computing means accessing IT resources (like servers, storage, databases, and software) over the internet instead of managing them yourself.
 
 ---

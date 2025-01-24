@@ -1,0 +1,185 @@
+ **Process of Nginx Web Server 
+### **Objective:**
+
+- Set up a basic Nginx web server on an Azure VM.
+- Replace the default Nginx webpage with a custom HTML page.
+- Download an image to the VM.
+- Display the downloaded image on the custom webpage.
+
+---
+
+### **1. SSH Login to the Azure VM**
+
+Start by logging into your Azure VM using SSH:
+
+1. Open the terminal 
+2. Use the following command to log into the VM (replace `tech501-haroon-az-key` with your actual private key, and `172.187.169.222` with your VM's public IP):
+
+
+`ssh -i tech501-haroon-az-key adminuser@172.187.169.222`
+
+Where:
+
+- `-i tech501-haroon-az-key`: Specifies the SSH key used for authentication.
+- `adminuser`: The username for your VM.
+- `172.187.169.222`: The public IP address of your VM.
+
+---
+
+### **2. Install Nginx on the VM**
+
+Once logged in, check if Nginx is already installed, or install it if needed:
+
+#### **Check if Nginx is installed:**
+
+Run the following command to see if Nginx is installed:
+
+
+
+`sudo systemctl is-enabled nginx`
+
+If Nginx is not installed, you’ll get an output saying it’s not found, and you can proceed to install it.
+
+#### **Install Nginx:**
+
+Run these commands to install Nginx:
+
+1. **Update the package list**:
+    
+    
+    sudo apt upgrade -y
+    `sudo apt update`
+    
+2. **Install Nginx**:
+    
+    
+    `sudo apt install nginx`
+    
+3. **Start Nginx**:
+    
+
+    
+    `sudo systemctl start nginx`
+    
+4. **Enable Nginx to start on boot**:
+    
+    
+    
+    `sudo systemctl enable nginx`
+    
+
+---
+
+### **3. Replace the Default Nginx Webpage**
+
+After installing Nginx, you’ll want to replace the default webpage with your custom HTML page.
+
+#### **Navigate to Nginx's Default HTML Directory:**
+
+The default webpage for Nginx is stored in `/var/www/html`. Navigate there:
+
+
+`cd /var/www/html`
+
+#### **Backup the Default Webpage 
+
+To keep a backup of the default `index.html`, run:
+
+`sudo mv index.html index.html.bak`
+
+#### **Create a Custom HTML Page:**
+
+Create a new `index.html` file in the `/var/www/html` directory:
+
+
+
+`sudo nano index.html`
+
+Add your custom HTML content, like this:
+
+html
+
+
+
+`<!DOCTYPE html> <html> <head>     <title>Haroon's Webpage</title> </head> <body>     <h1>Welcome to My Custom Webpage!</h1>     <br>     <p>This is my webpage running on Nginx.</p>     <img src="mountain-countryside-landscape-at-sunset-dramatic-sky-over-a-distant-valley-green-fields-and-trees-on-hill-beautiful-natural-landscapes-of-the-carpathians-generative-ai-variation-8-photo.jpeg" alt="My Image" width="600"> </body> </html>`
+
+Save and exit the file editor (`Ctrl + O` to save, `Ctrl + X` to exit).
+
+---
+
+### **4. Download an Image to the VM**
+
+Next, download the image you want to display on your webpage to the VM.
+
+1. **Download the Image** using `wget`:
+    
+    Run the following command to download the image from the URL:
+    
+  
+    
+    `wget https://static.vecteezy.com/system/resources/previews/024/669/482/non_2x/mountain-countryside-landscape-at-sunset-dramatic-sky-over-a-distant-valley-green-fields-and-trees-on-hill-beautiful-natural-landscapes-of-the-carpathians-generative-ai-variation-8-photo.jpeg`
+    
+    This will download the image to the current directory on your VM.
+    
+2. **Move the Image to the Correct Directory**:
+    
+    After the image is downloaded, move it to the `/var/www/html` directory so that Nginx can serve it:
+    
+    
+    `sudo mv mountain-countryside-landscape-at-sunset-dramatic-sky-over-a-distant-valley-green-fields-and-trees-on-hill-beautiful-natural-landscapes-of-the-carpathians-generative-ai-variation-8-photo.jpeg /var/www/html/`
+    
+
+---
+
+### **5. Verify and Test the Webpage**
+
+#### **Access the Webpage in a Browser:**
+
+1. Open a web browser and visit your VM’s public IP address (`http://172.187.169.222`).
+2. You should see your custom webpage with the image displayed.
+
+#### **Troubleshooting**:
+
+- If the webpage does not show the image, double-check that the `src` in the `<img>` tag matches the filename of the image you downloaded and moved to `/var/www/html`.
+
+---
+
+### **Task Summary**
+
+Here’s a recap of what was done:
+
+1. **Logged into the Azure VM** via SSH.
+2. **Installed Nginx** and verified it was enabled to start on boot.
+3. **Created a custom HTML page** to replace the default Nginx page.
+4. **Downloaded an image** to the VM and moved it to the Nginx web directory.
+5. **Updated the HTML page** to include the image.
+6. **Verified the webpage** by visiting the VM's public IP in the browser.
+
+---
+
+### **Final Remarks:**
+
+ successfully configured Nginx on your Azure VM, replaced the default webpage with a custom page, and added an image to it. 
+---
+
+
+
+chmod +x provision.sh
+.
+
+#!/bin/bash
+
+# update
+sudo apt update
+
+# upgrade
+sudo apt upgrade -y
+
+# install nginx
+sudo apt install nginx -y
+
+# restart nginx
+sudo systemctl restart nginx
+
+# enable nginx
+sudo systemcl enable nginx

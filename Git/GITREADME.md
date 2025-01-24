@@ -1,6 +1,11 @@
 # Git Learning README 
 - This README document will contain what i have learned about git today and it will explain my understanding of it 
 
+
+
+
+
+
 ## What is Git?
 
 1. Git is a tool that helps track changes in files, especially code files. It’s mainly used by developers to manage projects and keep a history of all changes.

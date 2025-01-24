@@ -1,5 +1,7 @@
 ### **What is a Virtual Machine (VM) in the Cloud?**
 
+[Home](README.md)
+
 A **Virtual Machine (VM)** is a virtualized version of a physical computer that runs in the cloud. It includes its own CPU, memory, storage, and operating system (OS), and behaves just like a physical computer. You can use VMs to run applications, host websites, or test environments without needing to own any hardware.
 
 ---

@@ -1,7 +1,7 @@
 
-## Cloud Question
+## Cloud Question's
 
-[Cloud](README.md)
+[Home](README.md)
 
 ### **1. How do we know if something is in the cloud?**
 
